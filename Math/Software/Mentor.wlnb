@@ -1,0 +1,250 @@
+{
+ "cells": [
+  {
+   "kind": 1,
+   "value": "### 简单介绍一下Wolfram Mathematica(MMA)及其用途\r\nMMA是由Wolfram公司开发的数学软件, 有独特的命令式编程语言Wolfram Language, 数学**函数/绘图/符号运算**等功能非常强大. \r\n掌握些许(很少)MMA知识, 能对数学分析解题和分析有较大帮助, 也能大大简化物理/数学公式符号推导.",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 1,
+   "value": "*下面我们演示一下MMA的用法, MMA和c的编程思想不同, 它更像是一行一行的对电脑的命令. 不要将其想成和c一样复杂, 通常一个函数, 就能实现非常强大的功能, 其内置函数非常丰富*",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "(*具体的各类函数, 大家可以上网查询wolfram语言官方文档, 有很详细的列明*)\r\n(*---以上是注释---*)\r\n\r\n(*计算积分, 当我们写完一个模块的程序后, 摁alt+enter执行*)\r\nIntegrate[Sin[x], x];\r\nIntegrate[Sin[x], {x, -Pi, 0}]\r\nD[Exp[x]*Sin[x], x]\r\n(*mma中加;意味着结果不显示. 其程序分为一个一个单元格(cell), 每个cell都可以独立执行*)",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><w>-</w><w>2</w></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "-2",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "93731cab-e14c-4679-8cba-793facb41787",
+     "metadata": {
+      "cellLabel": "Out[9]= ",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wrow><w></w><wsup><w></w><w>𝕖</w><w><w>x</w></w></wsup><w></w><wrow><w></w><w>Cos</w><wrow><w></w><wb>[</wb><w>x</w><wb>]</wb></wrow></wrow></wrow><w>+</w><wrow><w></w><wsup><w></w><w>𝕖</w><w><w>x</w></w></wsup><w></w><wrow><w></w><w>Sin</w><wrow><w></w><wb>[</wb><w>x</w><wb>]</wb></wrow></wrow></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "E^x*Cos[x] + E^x*Sin[x]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "c57e805e-a2e2-4624-a853-9cfcc36abf52",
+     "metadata": {
+      "cellLabel": "Out[10]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1661600367525,
+     "endTime": 1661600367871
+    },
+    "executionOrder": 8,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "Integrate[Sin[x], x]\r\n(*在mma中, 内置函数一般采用驼峰法命名(什么是?各首字母大写) \r\n而我们自定义函数一般可以使用矮驼峰法命名(什么是?)*)",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><w>-</w><wrow><w></w><w>Cos</w><wrow><w></w><wb>[</wb><w>x</w><wb>]</wb></wrow></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "-Cos[x]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "7c47feff-f09f-4035-b172-0cbd2bc5d9de",
+     "metadata": {
+      "cellLabel": "Out[4]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1661600325294,
+     "endTime": 1661600325452
+    },
+    "executionOrder": 4,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "(*wolfram最强大的是其符号推演能力, 也就是带着未知数进行数学运算*)\r\n(*求导后代入*)\r\nD[Sin[x], x];\r\n%/.x->2(*./->代表代入未知数, %代指上一个式子的运算结果*)\r\nN[%](*N用于精确小数表示*)",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><w>Cos</w><wrow><w></w><wb>[</wb><w>2</w><wb>]</wb></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "Cos[2]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "6ff1e2ef-0ce1-43ea-9439-189e7627831d",
+     "metadata": {
+      "cellLabel": "Out[16]= ",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><w>-</w><w>0.416147</w></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "-0.4161468365471424",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "e081a914-a292-4754-8338-9c0bce2d4f7c",
+     "metadata": {
+      "cellLabel": "Out[17]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1661600705593,
+     "endTime": 1661600705959
+    },
+    "executionOrder": 15,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "(*再试试更强大的符号运算, 我们定义一个\"泰勒多阶展开算子\", \r\n按公式将其函数展开为经典形式, \\δ是符号而不是变量*)\r\ntaylorOperator[ k_, f_] := (*k阶算子*) \r\n  Sum[ Binomial[k, i] (D[f, {x, k - i}, {y, i}])*\\[Delta]x^(k - i)*\\[Delta]y^i ,\r\n   {i, 0, k}];\r\ntaylorOperator[3, e^(x+y)]\r\n(*符号运算, 当然少不了整理多项式. \r\n我们简化该式: *)\r\nCollect[%, E^_, Simplify]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wrow><w></w><wsup><w></w><w>e</w><w><wrow><w></w><w>x</w><w>+</w><w>y</w></wrow></w></wsup><w></w><wsup><w></w><w>δx</w><w><w>3</w></w></wsup><w></w><wsup><w></w><wrow><w></w><w>Log</w><wrow><w></w><wb>[</wb><w>e</w><wb>]</wb></wrow></wrow><w><w>3</w></w></wsup></wrow><w>+</w><wrow><w></w><w>3</w><w></w><wsup><w></w><w>e</w><w><wrow><w></w><w>x</w><w>+</w><w>y</w></wrow></w></wsup><w></w><wsup><w></w><w>δx</w><w><w>2</w></w></wsup><w></w><w>δy</w><w></w><wsup><w></w><wrow><w></w><w>Log</w><wrow><w></w><wb>[</wb><w>e</w><wb>]</wb></wrow></wrow><w><w>3</w></w></wsup></wrow><w>+</w><wrow><w></w><w>3</w><w></w><wsup><w></w><w>e</w><w><wrow><w></w><w>x</w><w>+</w><w>y</w></wrow></w></wsup><w></w><w>δx</w><w></w><wsup><w></w><w>δy</w><w><w>2</w></w></wsup><w></w><wsup><w></w><wrow><w></w><w>Log</w><wrow><w></w><wb>[</wb><w>e</w><wb>]</wb></wrow></wrow><w><w>3</w></w></wsup></wrow><w>+</w><wrow><w></w><wsup><w></w><w>e</w><w><wrow><w></w><w>x</w><w>+</w><w>y</w></wrow></w></wsup><w></w><wsup><w></w><w>δy</w><w><w>3</w></w></wsup><w></w><wsup><w></w><wrow><w></w><w>Log</w><wrow><w></w><wb>[</wb><w>e</w><wb>]</wb></wrow></wrow><w><w>3</w></w></wsup></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "e^(x + y)*δx^3*Log[e]^3 + 3*e^(x + y)*δx^2*δy*Log[e]^3 + 3*e^(x + y)*δx*δy^2*Log[e]^3 + e^(x + y)*δy^3*Log[e]^3",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "beb20234-6eb3-4927-ba29-192f8633702e",
+     "metadata": {
+      "cellLabel": "Out[27]= ",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wsup><w></w><w>e</w><w><wrow><w></w><w>x</w><w>+</w><w>y</w></wrow></w></wsup><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><w>δx</w><w>+</w><w>δy</w></wrow><wb>)</wb></wrow><w><w>3</w></w></wsup><w></w><wsup><w></w><wrow><w></w><w>Log</w><wrow><w></w><wb>[</wb><w>e</w><wb>]</wb></wrow></wrow><w><w>3</w></w></wsup></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "e^(x + y)*(δx + δy)^3*Log[e]^3",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "202507aa-796a-49da-800a-8ae85d4c55e6",
+     "metadata": {
+      "cellLabel": "Out[28]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1661601141148,
+     "endTime": 1661601141483
+    },
+    "executionOrder": 26,
+    "success": true
+   }
+  },
+  {
+   "kind": 1,
+   "value": "> wolfram函数往往参数很多(和功能很多是对应的), 所以当参数过长时, 每一个参数可以换一行, 来增加可读性",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "(*最后介绍一点 mma 绘图, 看看就好, 知道有这么个东西, 用的时候Google一下啦*)\r\nPlot3D[{(-x^2 - y^2 + 4)^(1/2), \r\n    (x^2 + y^2)/3}, \r\n    {x, -2, 2}, \r\n    {y, -2, 2}, \r\n    AxesLabel -> Automatic, Mesh -> None, PlotStyle -> Opacity[0.5]]\r\n(*这个需要调用外部程序看捏*)",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1661601778683,
+     "endTime": 1661601779027
+    },
+    "executionOrder": 31,
+    "success": true
+   }
+  },
+  {
+   "kind": 1,
+   "value": "### Wolfram Alpha介绍\r\n**ios和web(网页)端的一款数学搜索程序, 即云上Mathematica.**\r\n\r\n你输入公式, 然后Wolfram公司的处理器帮你计算, 最终将结果再从云处理器返回你的手机, 是轻量化的MMA选择, 写作业的时候很好用捏.",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 1,
+   "value": "### MathJax(Latex)介绍\r\n一种在电脑上写数学公式的语法(和markdown类似, 需要特定编辑器来将*语法*转为*表现*), 特征是反斜杠\\起手\r\n- 希腊字母: $\\alpha$\r\n- 上标下标: $\\beta^{上标}_{下标}$\r\n- 积分符号: $\\int$\r\n- 分数: $\\frac{x}{y}$\r\n- 根号 $\\sqrt[3]x$\r\n- $\\nabla$ $\\forall$\r\n\r\n> 挺好用的吧, 可以给你们一份我自己记的笔记喽, 记得问我要",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 1,
+   "value": "### 最后的话\r\n刚接触计算机世界, 我知道你们一定觉得要学的东西太多了, 精力和时间完全不够用, 也不知道该走什么道路学什么路线.\r\n\r\n*这很正常, 因为我也经历过这个阶段, 也仍停留在这个阶段* 即使是现在, 我还觉得自己一无所知, 所学的东西也只是掌握了一些皮毛. 但只要能坚持每天学习, 每天进步, 即使你觉得离传说中的大牛码皇还遥遥无期, 但回过头, 你已经比大多数(北航)人都强了, 因为在你额外多学东西多练习的时候, 无数人正虚度着他们的光阴. 即使你进步得很慢, 但硅步也能致千里, 没有人能一口吃个胖子, 也没有人是生来就比别人强的. 不断学习, 你就已经很棒了. 如果又焦虑迷茫了, 那不如立刻停下头脑里的空想, 着手做点什么吧, 不管是什么总强过白日梦是吧?\r\n\r\n**革命尚未成功, 同志仍需努力!!!**",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}

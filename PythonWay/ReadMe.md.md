@@ -1,0 +1,1 @@
+将python单独分开做笔记, 因为未来可能会主攻python, 相反算法等课会放在basic programming中
